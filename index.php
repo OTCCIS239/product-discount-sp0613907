@@ -14,10 +14,22 @@
     <title>Product Discount</title>
   </head>
   <body>
-    <div class="container">
-        <div class="card">
-            <h1>Discount Calculator</h1>
+    <div class="container" style="height: 100vh">
+      <div class="row align-items-center" style="height: 100%">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div class="card">
+              <div class="card-header">
+                Discount Calculator
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Optional JavaScript -->
