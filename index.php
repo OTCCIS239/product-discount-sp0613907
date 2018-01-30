@@ -20,12 +20,30 @@
         <div class="col-6">
           <div class="card">
               <div class="card-header">
-                Discount Calculator
+                Product Discount Calculator
               </div>
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <form action="product.php" method="post">
+                  <div class="row">
+                  <div class="form-group col-6">
+                    <label for="pd-input">Product Description:</label><br>
+                    <!-- <input type="text" name="product-description" id="pd-input"><br> -->
+                    <label for="lp-input">List Price:</label><br>
+                    <!-- <input type="text" name="list-price" id="lp-input"><br> -->
+                    <label for="dp-input">Discount Percent:</label><br>
+                    <!-- <input type="text" name="discount-percent" id="dp-input"><br> -->
+                  </div>
+                  <div class="form-group col-6">
+                    <input type="text" name="product-description" id="pd-input"><br>
+                    <input type="text" name="list-price" id="lp-input"><br>
+                    <input type="text" name="discount-percent" id="dp-input"><br>
+                  </div>
+                </div>
+                  <div id="buttons">
+                    <label for="submit-button">&nbsp;</label>
+                    <input type="submit" value="Calculate Discount"><br>
+                  </div>
+                </form>
               </div>
           </div>
         </div>
