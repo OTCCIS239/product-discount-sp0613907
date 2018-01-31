@@ -5,7 +5,7 @@ $price = filter_input(INPUT_POST, 'list-price');
 $discountPercent = filter_input(INPUT_POST, 'discount-percent');
 
 // calculate the discount and discount percent
-$discount = $price*discountPercent*.01;
+$discount = $price * $discountPercent * .01;
 $discountPrice = $price - $discount;
 
 // apply currency formatting to the dollar and percent amounts
@@ -15,6 +15,8 @@ $discountF = "$".number_format($discount, 2);
 $discountPriceF = "$".number_format($discountPrice, 2);
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <!-- Steven Phillips -->
@@ -27,6 +29,7 @@ $discountPriceF = "$".number_format($discountPrice, 2);
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="master.css">
+
 <title>Product Discount Calculator</title>
 </head>
 <body>
@@ -48,30 +51,33 @@ $discountPriceF = "$".number_format($discountPrice, 2);
                     <!-- <input class="form-control" type="text" name="list-price" id="lp-input"><br> -->
                     <label class="label-pad" for="dp-input">Discount Percent:</label><br>
                     <!-- <input class="form-control" type="text" name="discount-percent" id="dp-input"><br> -->
+                    <label class="label-pad" for="dp-input">Discount:</label><br>
+
+                    <label class="label-pad" for="dp-input">Total:</label><br>
                   </div>
                   <div class="form-group col-6">
 
-                    <input class="form-control" type="text" name="product-description" id="pd-input"><br>
-
-                    <div class="input-group mb-4">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">$</span>
-                      </div>
-                      <input class="form-control" type="text" name="list-price" id="lp-input"><br>
+                    <div class="label-pad">
+                      <span ><?php echo htmlspecialchars($description); ?></span><br>
                     </div>
 
-                    <div class="input-group mb-3">
-                      <input class="form-control" type="text" name="discount-percent" id="dp-input"><br>
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">%</span>
-                      </div>
+                    <div class="label-pad">
+                      <span><?php echo htmlspecialchars($listPriceF); ?></span><br>
+                    </div>
+
+                    <div class="label-pad">
+                      <span><?php echo htmlspecialchars($discountPercentF); ?></span><br>
+                    </div>
+
+                    <div class="label-pad">
+                      <span><?php echo htmlspecialchars($discountF); ?></span><br>
+                    </div>
+
+                    <div class="label-pad">
+                      <span><?php echo htmlspecialchars($discountPriceF); ?></span><br>
                     </div>
 
                   </div>
-              </div>
-              <div id="buttons" style="padding-left:27%">
-                <label for="submit-button">&nbsp;</label>
-                <input class="btn btn-primary" type="submit" value="Calculate Discount"><br>
               </div>
             </form>
           </div>
