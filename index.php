@@ -1,5 +1,17 @@
 <!doctype html>
 <html lang="en">
+  <?php
+
+      $products = [
+          "Screwdriver",
+          "Clapton Coil",
+          "WD Red 2TB HDD 7200rpm (x4)",
+          "16GB 4x4 DDR4 RAM"
+      ];
+
+  ?>
+  
+  
   <head>
     <!-- Steven Phillips -->
 
@@ -35,7 +47,12 @@
                       </div>
                       <div class="form-group col-6">
 
-                        <input class="form-control" type="text" name="product-description" id="pd-input"><br>
+                        <!-- <input class="form-control" type="text" name="product-description" id="pd-input"><br> -->
+                        <select name="description" class="form-control">
+                            <?php foreach($products as $product): ?>
+                                    <option value="<? $product ?>"><?= $product ?></options>
+                            <?php endforeach ?>
+                        </select>
 
                         <div class="input-group mb-4">
                           <div class="input-group-prepend">
