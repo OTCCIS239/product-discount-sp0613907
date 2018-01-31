@@ -16,6 +16,14 @@
     <!-- Steven Phillips -->
 
 
+    <!--TODO: 1.REPLACE DISCOUNT PERCENT WITH A DROPDOWN 
+              'CUPONS'. 
+
+              2.USE AND INDEX ARRAY WHERE THE 
+              INDECIES ARE THE PERCENTAGES. 
+              
+              3.SEND THE PECRENTAGES TO THE NEXT PAGE  -->
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
