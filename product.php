@@ -44,7 +44,7 @@ $discountPriceF = "$".number_format($discountPrice, 2);
           <div class="card-body">
             <form action="product.php" method="post">
               <div class="row">
-                <div class="form-group col-6">
+                <div class="form-group col-7">
                     <label class="label-pad" for="pd-input">Product Description:</label><br>
                     <!-- <input class="form-control" type="text" name="product-description" id="pd-input"><br> -->
                     <label class="label-pad" for="lp-input">List Price:</label><br>
@@ -55,25 +55,25 @@ $discountPriceF = "$".number_format($discountPrice, 2);
 
                     <label class="label-pad" for="dp-input">Total:</label><br>
                   </div>
-                  <div class="form-group col-6">
+                  <div class="form-group col-5">
 
-                    <div class="label-pad">
+                    <div class="span-margin">
                       <span ><?php echo htmlspecialchars($description); ?></span><br>
                     </div>
 
-                    <div class="label-pad">
+                    <div class="span-margin">
                       <span><?php echo htmlspecialchars($listPriceF); ?></span><br>
                     </div>
 
-                    <div class="label-pad">
+                    <div class="span-margin">
                       <span><?php echo htmlspecialchars($discountPercentF); ?></span><br>
                     </div>
 
-                    <div class="label-pad">
+                    <div class="span-margin">
                       <span><?php echo htmlspecialchars($discountF); ?></span><br>
                     </div>
 
-                    <div class="label-pad">
+                    <div class="span-margin">
                       <span><?php echo htmlspecialchars($discountPriceF); ?></span><br>
                     </div>
 
