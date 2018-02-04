@@ -3,26 +3,33 @@
   <?php
 
       $products = [
-          "Screwdriver",
-          "Clapton Coil",
-          "WD Red 2TB HDD 7200rpm (x4)",
-          "16GB 4x4 DDR4 RAM"
+          "Sour Patch Kids - 10lb",
+          "Sour Skittles - 10lb",
+          "Gummy Bears - 10lb",
+          "Milky Way - 60 bar",
+          "Jolly Rancher - 1500pc"
+      ];
+
+      $cupons = [
+        10 => "Senior",
+        20 => "Military",
+        95 => "Adam E."
       ];
 
   ?>
-  
-  
+
+
   <head>
     <!-- Steven Phillips -->
 
 
-    <!--TODO: 1.REPLACE DISCOUNT PERCENT WITH A DROPDOWN 
-              'CUPONS'. 
+    <!--TODO: 1.REPLACE DISCOUNT PERCENT WITH A DROPDOWN
+              'CUPONS'.
 
-              2.USE AND INDEX ARRAY WHERE THE 
-              INDECIES ARE THE PERCENTAGES. 
-              
-              3.SEND THE PECRENTAGES TO THE NEXT PAGE  -->
+              2.USE AND INDEX ARRAY WHERE THE
+              INDECIES ARE THE PERCENTAGES.
+
+              3.SEND THE PERCENTAGES TO THE NEXT PAGE  -->
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -43,7 +50,7 @@
                 Product Discount Calculator
               </div>
               <div class="card-body">
-                <form action="product.php" method="post">
+                <form action="product.php" method="get">
                   <div class="row">
                     <div class="form-group col-6">
                         <label class="label-pad" for="pd-input">Product Description:</label><br>
@@ -56,9 +63,9 @@
                       <div class="form-group col-6">
 
                         <!-- <input class="form-control" type="text" name="product-description" id="pd-input"><br> -->
-                        <select name="description" class="form-control">
+                        <select class="form-control mb-4">
                             <?php foreach($products as $product): ?>
-                                    <option value="<? $product ?>"><?= $product ?></options>
+                                    <option name="product-description" value="<?= $product ?>"><?= $product ?></options>
                             <?php endforeach ?>
                         </select>
 
@@ -70,10 +77,12 @@
                         </div>
 
                         <div class="input-group mb-3">
-                          <input class="form-control" type="text" name="discount-percent" id="dp-input"><br>
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">%</span>
-                          </div>
+                          <!-- <input class="form-control" type="text" name="discount-percent" id="dp-input"><br> -->
+                          <select class="form-control mb-4">
+                              <?php foreach($cupons as $discount => $rate): ?>
+                                      <option name="product-description" value="<?= $discount ?>"><?=  $rate ?></options>
+                              <?php endforeach ?>
+                          </select>
                         </div>
 
                       </div>
