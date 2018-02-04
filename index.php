@@ -80,7 +80,7 @@
                           <!-- <input class="form-control" type="text" name="discount-percent" id="dp-input"><br> -->
                           <select class="form-control mb-4">
                               <?php foreach($cupons as $rate => $discount): ?>
-                                      <option name="product-description" value="<?= $rate ?>% -<?= $discount ?>"><?= $rate ?>% -<?= $discount ?></options>
+                                      <option name="product-description" value="<?= $discount ?>"><?= $rate ?>% -<?= $discount ?></options>
                               <?php endforeach ?>
                           </select>
                         </div>
