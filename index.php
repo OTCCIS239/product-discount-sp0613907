@@ -50,7 +50,7 @@
                 Product Discount Calculator
               </div>
               <div class="card-body">
-                <form action="product.php" method="get">
+                <form action="product.php" method="post">
                   <div class="row">
                     <div class="form-group col-6">
                         <label class="label-pad" for="pd-input">Product Description:</label><br>
@@ -79,8 +79,8 @@
                         <div class="input-group mb-3">
                           <!-- <input class="form-control" type="text" name="discount-percent" id="dp-input"><br> -->
                           <select class="form-control mb-4">
-                              <?php foreach($cupons as $discount => $rate): ?>
-                                      <option name="product-description" value="<?= $discount ?>"><?=  $rate ?></options>
+                              <?php foreach($cupons as $rate => $discount): ?>
+                                      <option name="product-description" value="<?= $rate ?>% -<?= $discount ?>"><?= $rate ?>% -<?= $discount ?></options>
                               <?php endforeach ?>
                           </select>
                         </div>
