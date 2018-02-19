@@ -1,37 +1,34 @@
-<!doctype html>
-<html lang="en">
-  <?php
+<?php
+      //connecting to the database
+      $dsn = "mysql:host=localhost;dbname=discounter";
+      $username = 'root';
+      $password = null;
+      $conn = new PDO($dsn, $username, $password);
 
-      $products = [
-          "Sour Patch Kids - 10lb",
-          "Sour Skittles - 10lb",
-          "Gummy Bears - 10lb",
-          "Milky Way - 60 bar",
-          "Jolly Rancher - 1500pc"
-      ];
+      //products table
+      $query = "SELECT * FROM products WHERE in_stock > 0";
+      $statement = $conn->prepare($query);
+      //bind vars
+      $statement->execute();
+      $products = $statement->fetchAll();
+      $statement->closeCursor();
 
-      $cupons = [
-        10 => "Senior",
-        20 => "Military",
-        95 => "Adam E."
-      ];
+      //coupons table
+      $query = "SELECT * FROM coupons WHERE deleted_at IS NULL";
+      $statement = $conn->prepare($query);
+      $statement->execute();
+      $coupons = $statement->fetchAll();
+      $statement->closeCursor();
+
+      // var_dump($coupons);
+      // die();
 
   ?>
 
-
+<!doctype html>
+<html lang="en">
   <head>
     <!-- Steven Phillips -->
-
-
-    <!--TODO: 1.REPLACE DISCOUNT PERCENT WITH A DROPDOWN
-              'CUPONS'.
-
-              2.USE AND INDEX ARRAY WHERE THE
-              INDECIES ARE THE PERCENTAGES.
-
-              3.SEND THE PERCENTAGES TO THE NEXT PAGE  -->
-
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -55,7 +52,7 @@
                     <div class="form-group col-6">
                         <label class="label-pad" for="pd-input">Product Description:</label><br>
                         <!-- <input class="form-control" type="text" name="product-description" id="pd-input"><br> -->
-                        <label class="label-pad" for="lp-input">List Price:</label><br>
+                        <!-- <label class="label-pad" for="lp-input">List Price:</label><br> -->
                         <!-- <input class="form-control" type="text" name="list-price" id="lp-input"><br> -->
                         <label class="label-pad" for="dp-input">Discount Percent:</label><br>
                         <!-- <input class="form-control" type="text" name="discount-percent" id="dp-input"><br> -->
@@ -65,22 +62,22 @@
                         <!-- <input class="form-control" type="text" name="product-description" id="pd-input"><br> -->
                         <select class="form-control mb-4">
                             <?php foreach($products as $product): ?>
-                                    <option name="product-description" value="<?= $product ?>"><?= $product ?></options>
+                                    <option name="product-description" value="<?= $product['price'] ?>"><?= $product['name'] ?> - $<?= $product['price']?></options>
                             <?php endforeach ?>
                         </select>
 
-                        <div class="input-group mb-4">
+                        <!-- <div class="input-group mb-4">
                           <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                           </div>
                           <input class="form-control" type="text" name="list-price" id="lp-input"><br>
-                        </div>
+                        </div> -->
 
                         <div class="input-group mb-3">
                           <!-- <input class="form-control" type="text" name="discount-percent" id="dp-input"><br> -->
-                          <select class="form-control mb-4">
-                              <?php foreach($cupons as $rate => $discount): ?>
-                                      <option name="product-description" value="<?= $discount ?>"><?= $rate ?>% -<?= $discount ?></options>
+                          <select name ="discount" id="discount" class="form-control mb-4">
+                              <?php foreach($coupons as $coupons): ?>
+                                      <option name="product-description" value="<?= $coupons['discount_percent'] ?>"><?= $coupons['code'] ?> - <?= $coupons['discount_percent'] ?>% Off</options>
                               <?php endforeach ?>
                           </select>
                         </div>
