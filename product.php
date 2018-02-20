@@ -1,31 +1,35 @@
 <?php
 
 //connecting to the database
-$dsn = "mysql:host=localhost;dbname=discounter";
-$username = 'root';
-$password = null;
-$conn = new PDO($dsn, $username, $password);
+require_once('./db.php');
 
 // get the data from the form
 $product_id = filter_input(INPUT_POST, 'product_id');
 $coupon_id = filter_input(INPUT_POST, 'coupon_id');
 
-$query = "SELECT * FROM products WHERE id = :product_id";
-$statement = $conn->prepare($query);
-$statement->bindValue(':product_id', $product_id);
-$statement->execute();
-$product = $statement->fetch();
-$statement->closeCursor();
+// $query = "SELECT * FROM products WHERE id = :product_id";
+// $statement = $conn->prepare($query);
+// $statement->bindValue(':product_id', $product_id);
+// $statement->execute();
+// $product = $statement->fetch();
+// $statement->closeCursor();
 
-$query = "SELECT * FROM coupons WHERE id = :coupon_id";
-$statement = $conn->prepare($query);
-$statement->bindValue(':coupon_id', $coupon_id);
-$statement->execute();
-$coupon = $statement->fetch();
-$statement->closeCursor();
+// $query = "SELECT * FROM coupons WHERE id = :coupon_id";
+// $statement = $conn->prepare($query);
+// $statement->bindValue(':coupon_id', $coupon_id);
+// $statement->execute();
+// $coupon = $statement->fetch();
+// $statement->closeCursor();
 
 // var_dump($product);
 // die();
+
+$product = getOne("SELECT * FROM products WHERE id = :product_id",
+                  [':product_id' => $product_id],
+                  $conn);
+$coupon = getOne("SELECT * FROM coupons WHERE id = :coupon_id",
+                  [':coupon_id' => $coupon_id],
+                  $conn);
 
 $description = $product['description'];
 $price = $product['price'];

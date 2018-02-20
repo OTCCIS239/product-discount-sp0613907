@@ -1,9 +1,7 @@
 <?php
-      //connecting to the database
-      $dsn = "mysql:host=localhost;dbname=discounter";
-      $username = 'root';
-      $password = null;
-      $conn = new PDO($dsn, $username, $password);
+
+    //connecting to the database
+      require_once('./db.php');
 
       //products table
       $query = "SELECT * FROM products WHERE in_stock > 0";
