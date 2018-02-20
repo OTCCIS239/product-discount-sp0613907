@@ -50,19 +50,19 @@
                 <form action="product.php" method="post">
                   <div class="row">
                     <div class="form-group col-6">
-                        <label class="label-pad" for="pd-input">Product Description:</label><br>
+                        <label class="label-pad" for="product_id">Product Description:</label><br>
                         <!-- <input class="form-control" type="text" name="product-description" id="pd-input"><br> -->
                         <!-- <label class="label-pad" for="lp-input">List Price:</label><br> -->
                         <!-- <input class="form-control" type="text" name="list-price" id="lp-input"><br> -->
-                        <label class="label-pad" for="dp-input">Discount Percent:</label><br>
+                        <label class="label-pad" for="coupon_id">Discount Percent:</label><br>
                         <!-- <input class="form-control" type="text" name="discount-percent" id="dp-input"><br> -->
                       </div>
                       <div class="form-group col-6">
 
                         <!-- <input class="form-control" type="text" name="product-description" id="pd-input"><br> -->
-                        <select class="form-control mb-4">
+                        <select name="product_id" id="product_id" class="form-control mb-4">
                             <?php foreach($products as $product): ?>
-                                    <option name="product-description" value="<?= $product['price'] ?>"><?= $product['name'] ?> - $<?= $product['price']?></options>
+                                    <option value="<?= $product['id'] ?>"><?= $product['name'] ?> - $<?= $product['price']?></options>
                             <?php endforeach ?>
                         </select>
 
@@ -75,9 +75,9 @@
 
                         <div class="input-group mb-3">
                           <!-- <input class="form-control" type="text" name="discount-percent" id="dp-input"><br> -->
-                          <select name ="discount" id="discount" class="form-control mb-4">
+                          <select name ="coupon_id" id="coupon_id" class="form-control mb-4">
                               <?php foreach($coupons as $coupons): ?>
-                                      <option name="product-description" value="<?= $coupons['discount_percent'] ?>"><?= $coupons['code'] ?> - <?= $coupons['discount_percent'] ?>% Off</options>
+                                      <option value="<?= $coupons['id'] ?>"><?= $coupons['code'] ?> - <?= $coupons['discount_percent'] ?>% Off</options>
                               <?php endforeach ?>
                           </select>
                         </div>

@@ -1,17 +1,44 @@
 <?php
+
+//connecting to the database
+$dsn = "mysql:host=localhost;dbname=discounter";
+$username = 'root';
+$password = null;
+$conn = new PDO($dsn, $username, $password);
+
 // get the data from the form
-$description = filter_input(INPUT_POST, 'product-description');
-$price = filter_input(INPUT_POST, 'list-price');
-$discountPercent = filter_input(INPUT_POST, 'discount-percent');
+$product_id = filter_input(INPUT_POST, 'product_id');
+$coupon_id = filter_input(INPUT_POST, 'coupon_id');
+
+$query = "SELECT * FROM products WHERE id = :product_id";
+$statement = $conn->prepare($query);
+$statement->bindValue(':product_id', $product_id);
+$statement->execute();
+$product = $statement->fetch();
+$statement->closeCursor();
+
+$query = "SELECT * FROM coupons WHERE id = :coupon_id";
+$statement = $conn->prepare($query);
+$statement->bindValue(':coupon_id', $coupon_id);
+$statement->execute();
+$coupon = $statement->fetch();
+$statement->closeCursor();
+
+// var_dump($product);
+// die();
+
+$description = $product['description'];
+$price = $product['price'];
+$discount = $coupon['discount_percent'];
 
 // calculate the discount and discount percent
-$discount = $price * $discountPercent * .01;
-$discountPrice = $price - $discount;
+$discountAmt = $price * ($discount / 100);
+$discountPrice = $price - $discountAmt;
 
 // apply currency formatting to the dollar and percent amounts
 $listPriceF = "$".number_format($price, 2);
-$discountPercentF = $discountPercent."%";
-$discountF = "$".number_format($discount, 2);
+$discountPercentF = $discount."%";
+$discountF = "$".number_format($discountAmt, 2);
 $discountPriceF = "$".number_format($discountPrice, 2);
 
 ?>
